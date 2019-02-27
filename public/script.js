@@ -1,11 +1,11 @@
-
+//This runs when the page loads. right now it gets all the data from the api, generates a page and then inserts it into index.html #display div
 $(document).ready(function(){
 	$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
 		var pageHTML = generatePage(result);
 		$("#display").append(pageHTML);
 	});
 });
-
+//Function takes a database array and returns the page with the appropriate contents. pagination should go here.
 function generatePage(commentArray) {
 	var pageHTML = "";
 	for (count = 0; count < commentArray.length; count++) {
@@ -20,6 +20,7 @@ function commentToHTML(comment) {
 	var commentHTML = "<div class='message-container'><div id='title-container'><div id='name-linked'><a href='mailto:" + comment.Email + "'>" + comment.PostName + "</a></div><div id='date'>" + convertFromUnixTimestamp(comment.PostDate) + "</div></div><hr><div id='message-content'>" + comment.Message + "</div></div>";
 	return commentHTML;
 }
+
 function convertFromUnixTimestamp(timestamp) {
 	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 	var a = new Date(timestamp*1000);
@@ -35,6 +36,7 @@ function zeroCount(){
 	maxChar = document.getElementById("message-style").maxLength;
 	document.getElementById('counter_div').innerHTML = '0/'+maxChar;
 }
+
 function counter(msg){
 	document.getElementById('counter_div').innerHTML = msg.value.length+'/'+maxChar;
 	if (msg.value.length == maxChar) {
@@ -43,6 +45,7 @@ function counter(msg){
 		document.getElementById('counter_div').style.color = "";
 	}
 }
+
 function blankStatus() {
     document.getElementById('status_container').innerHTML = "";
 }
