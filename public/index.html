@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<title>Guestbook</title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+	<script src = "script.js">
+	</script>
+</head>
+
+<body onload='zeroCount()' oninput='blankStatus()' >
+	<div id='outer-frame' class='box'>
+		<div id='title-box' class='box'>
+			title currentpage:<span id='current-page'>0</span> start:<span id='start'>0</span> stop:<span id='stop'>0</span>
+		</div>
+		<form id="top-box" class="box" action="dbinsert.php" method="post">
+			<div id='input-container'>
+				<label class='marker'>Name: </label><input type='text' name='name' class='input-style'>
+			</div>
+			<div id='input-container'>
+				<label class='marker'>E-mail: </label><input type='text' name='email' class='input-style'>
+			</div>
+			<div id='message-input-container'>
+				<textarea name='message' id='message-style' placeholder='Type message here...' maxLength='400' onkeyup='counter(this);'></textarea>
+			</div>
+			<div id='counter_div'></div>
+			<div id='status_container'><?php echo $messageStatus; ?></div>
+			<div id='submit-container'>
+				<input type='submit' value='Submit Message' id='submit'>
+			</div>
+		</form>
+		
+		<div id='bot-box' class='box'>
+			<span id='display'></span>
+		</div>
+		<div id='footer' class='box'>
+			<span id ='page-select'><a id='back-page' onclick='backPage()'>back</a>||<a id='forward-page' onclick='forwardPage()'>forward</a></span>
+		</div>
+	</div>
+</body>
+
+</html>

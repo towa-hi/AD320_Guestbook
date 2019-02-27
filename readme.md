@@ -1,0 +1,1 @@
+to start, type "SET DEBUG=ad320-guestbook:* & npm start"
