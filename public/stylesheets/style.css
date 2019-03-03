@@ -1,3 +1,11 @@
+:root {
+  --theme-font-color: black;
+  --theme-box-color: #e3e8e7;
+  --theme-div-color: #e3e8e7;
+  --theme-font-size: 125%;
+
+}
+
 #outer-frame {
 	display: flex;
 	border: 3px solid;
@@ -55,13 +63,16 @@
 }
 #submit {
 	width: 100%;
+
 }
 #top-box {
 	margin-bottom: 0;
+	background-color: var(--theme-div-color)
 }
 #bot-box {
 	flex: 1;
 	overflow-y: scroll;  
+	background-color: var(--theme-div-color)
 }
 #title-box {
 	text-align: center;
@@ -84,6 +95,9 @@
 border: 1px solid;
 padding: 0.5em;
 margin: 0.5em;
+font-size: var(--theme-font-size);
+color:var(--theme-font-color);
+background-color:;
 }
 
 #message-style {
@@ -92,4 +106,61 @@ margin: 0.5em;
 }
 #footer {
 	text-align: center;
+}
+ 
+ /** Admin css */
+ #adform-container {
+	max-width:800px;
+	width:100%;
+	margin:auto;
+	align-items: center;
+}
+#header {
+	background:#ddc6b6;
+	width:100%;
+	height:55px;
+	margin:0 auto;
+	vertical-align:middle;
+	text-align: center;
+}
+
+
+body#admin-body {
+  font-family:"Times New Roman", Times, serif;
+  background-color: #492004 ;
+  color:#492004;
+ 
+}
+
+#admin-form2 {
+	background:#ddc6b6 ;
+	padding:25px;
+	height: 850px; 
+	margin:10 auto;
+}
+
+#admin-form2 input[type="text"]
+
+ {
+    margin: 0 0 10px;
+	padding: 0;
+	width: 20%;
+	height: 30px;
+}
+#adsave {
+	cursor:pointer;
+	width:100%;
+	margin:0 0 5px;
+	padding:10px;
+	
+}
+
+#adsave :hover {
+	background:#ddc6b5; 	
+}
+
+.adbox{
+ border: solid black 1px;
+ margin:0 0 5px;
+ padding:10px;
 }
