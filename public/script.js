@@ -4,11 +4,14 @@ var currentPage = 0;
 var maxPages = 10;
 var lastPage = 0;
 var commentsPerPage = 6;
+
+//holds all the comments served by the api on load.
 var commentArray;
 
+//these variables all need to be set by a function that runs upon document load that reads from the preferences database.
 var enablePostName = 1;
 var enablePostEmail = 1;
-var displayPostName = 1;
+var displayPostName = 0;
 var displayPostEmail = 1;
 var displayPostDate = 1;
 var defaultCommentsPerPage;
@@ -23,12 +26,14 @@ $(document).ready(function(){
 	hideFields();
 });
 
+//calls generatePage() and inserts it into #display
 function drawPage() {
 	var pageHTML = generatePage();
 	$("#display").html(pageHTML);
 	
 }
 
+//runs upon document load. hides irrelevant UI elements depending on local preferences
 function hideFields() {
 	if (enablePostName === 0) {
 		$('#input-container-name').hide();
@@ -37,9 +42,11 @@ function hideFields() {
 		$('#input-container-email').hide();
 	}
 }
-//Function takes a database array and returns the page with the appropriate contents. pagination should go here.
+
+//takes a database array and returns the page with the appropriate contents.
 function generatePage() {
 	var pageHTML = "";
+	//from comment at start of current page to comment at end of current page...
 	for (count = currentPage * commentsPerPage; count < (currentPage * commentsPerPage) + commentsPerPage; count++) {
 		if (count < commentArray.length){
 			var comment = commentArray[count];
@@ -50,6 +57,7 @@ function generatePage() {
 	return pageHTML;
 }
 
+//this function takes all the local preferences into account and creates a html string out a comment object.
 function commentToHTML(comment) {
 	var commentHTML = "<div class='message-container'><div id='title-container'>";
 	if (displayPostEmail == 1) {
