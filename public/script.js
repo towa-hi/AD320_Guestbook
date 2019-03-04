@@ -30,7 +30,7 @@ $(document).ready(function(){
 function drawPage() {
 	var pageHTML = generatePage();
 	$("#display").html(pageHTML);
-	
+
 }
 
 //runs upon document load. hides irrelevant UI elements depending on local preferences
@@ -127,3 +127,18 @@ function counter(msg){
 function blankStatus() {
     document.getElementById('status_container').innerHTML = "";
 }
+
+// $(document).ready(function(){
+//    var $form = $('form');
+// 	 console.log($(this).attr('action'));
+//    $form.submit(function(){
+//       $.post('/api/v1/post/addMessage', $(this).serialize(), function(response){
+// 				// console.log('GHelp');
+// 				// $.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
+// 				// 	var pageHTML = generatePage(result);
+// 				// 	$("#display").append(pageHTML);
+// 				// });	// do something here on success
+//       },'json');
+//       return false;
+//    });
+// });

@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var commentsRouter = require('./routes/comments');
+var postRouter = require('./routes/post');
 //initialize app
 var app = express();
 //set paths
@@ -18,5 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 //set api url
 app.use('/api/v1/comments', commentsRouter);
+app.use('/api/v1/post', postRouter);
 
 module.exports = app;

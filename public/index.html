@@ -12,12 +12,12 @@
 		<div id='title-box' class='box'>
 			title
 		</div>
-		<form id="top-box" class="box" action="dbinsert.php" method="post">
+		<form id="top-box" class="box" action="/api/v1/post/addMessage" method="post">
 			<div id='input-container-name' class='input-container'>
-				<label class='marker'>Name: </label><input type='text' name='name-field' class='input-style'>
+				<label class='marker'>Name: </label><input type='text' name='name_field' class='input-style'>
 			</div>
 			<div id='input-container-email' class='input-container'>
-				<label class='marker'>E-mail: </label><input type='text' name='email-field' class='input-style'>
+				<label class='marker'>E-mail: </label><input type='text' name='email_field' class='input-style'>
 			</div>
 			<div id='message-input-container'>
 				<textarea name='message' id='message-style' placeholder='Type message here...' maxLength='400' onkeyup='counter(this);'></textarea>
@@ -28,9 +28,9 @@
 				<input type='submit' value='Submit Message' id='submit'>
 			</div>
 		</form>
-		
+
 		<div id='bot-box' class='box'>
-			<span id='display'><!-- comments go here --></span> 
+			<span id='display'><!-- comments go here --></span>
 		</div>
 		<div id='footer' class='box'>
 			<span id ='page-select-container'>
