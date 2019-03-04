@@ -5,7 +5,9 @@ var db = require('../db');
 
 var dt = new Date();
 
-router.post('/addMessage', function(req,res,next){
+router.post('/', function(req,res){
+  
+  
   var query = "INSERT INTO messages (PostName, PostDate, Email, Message)"
     +"VALUES ( ?, ?, ?, ?);"
   var queryParams = [
@@ -20,7 +22,6 @@ router.post('/addMessage', function(req,res,next){
       res.status(500).send(error);
     }
     res.status(201).send('record added');
-    // location.href = 'https://www.quackit.com';
   });
 });
 

@@ -142,3 +142,13 @@ function blankStatus() {
 //       return false;
 //    });
 // });
+
+$(document).ready(function() {
+	$("#top-box").click(function(e) {
+		e.preventDefault();
+		$.post('/addMessage', $(this).serialize(), function(response) {
+			//clear out form
+			//regenerate bot box
+		});
+	});
+});
