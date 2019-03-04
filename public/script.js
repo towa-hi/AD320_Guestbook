@@ -148,7 +148,12 @@ $(document).ready(function() {
 		e.preventDefault();
 		$.post('/addMessage', $(this).serialize(), function(response) {
 			//clear out form
-			//regenerate bot box
+			$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
+				commentArray =  result;
+				lastPage = Math.round(commentArray.length / commentsPerPage) - 1;
+				drawPage();
+			});
+			hideFields();
 		});
 	});
 });
