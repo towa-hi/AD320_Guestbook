@@ -11,7 +11,7 @@ var commentArray;
 //these variables all need to be set by a function that runs upon document load that reads from the preferences database.
 var enablePostName = 1;
 var enablePostEmail = 1;
-var displayPostName = 0;
+var displayPostName = 1;
 var displayPostEmail = 1;
 var displayPostDate = 1;
 var defaultCommentsPerPage;
@@ -144,16 +144,11 @@ function blankStatus() {
 // });
 
 $(document).ready(function() {
-	$("#top-box").click(function(e) {
+	$("#submit").click(function(e) {
 		e.preventDefault();
-		$.post('/addMessage', $(this).serialize(), function(response) {
+		$.post('/addMessage', $("#top-box").serialize(), function(response) {
+			//refresh bot box (matt's code may handle this or call his function)
 			//clear out form
-			$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
-				commentArray =  result;
-				lastPage = Math.round(commentArray.length / commentsPerPage) - 1;
-				drawPage();
-			});
-			hideFields();
 		});
 	});
 });
