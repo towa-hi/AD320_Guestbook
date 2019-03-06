@@ -146,7 +146,7 @@ function blankStatus() {
 $(document).ready(function() {
 	$("#submit").click(function(e) {
 		e.preventDefault();
-		$.post('/addMessage', $("#top-box").serialize(), function(response) {
+		$.post('/api/v1/post', $("#top-box").serialize(), function(response) {
 			//refresh bot box (matt's code may handle this or call his function)
 			//clear out form
 		});
