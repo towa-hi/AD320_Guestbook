@@ -1,44 +1,66 @@
-//This runs when the page loads. right now it gets all the data from the api, generates a page and then inserts it into index.html #display div
+//This script runs when the page loads on client side. it gets all the data from the api, generates a page and then inserts it into index.html #display div
 
 var currentPage = 0;
 var maxPages = 10;
 var lastPage = 0;
-var commentsPerPage = 6;
+var commentsPerPage;
 
-//holds all the comments served by the api on load.
+//holds all the comments served by the api on load
 var commentArray;
 
-//these variables all need to be set by a function that runs upon document load that reads from the preferences database.
-var enablePostName = 1;
-var enablePostEmail = 1;
-var displayPostName = 0;
-var displayPostEmail = 1;
-var displayPostDate = 1;
+//these variables are set by setPrefs()
+var enablePostName;
+var enablePostEmail;
+var displayPostName;
+var displayPostEmail;
+var displayPostDate;
 var defaultCommentsPerPage;
 var defaultMaxPages;
 
+setPrefs();
+
+//fetch comments after page is ready
 $(document).ready(function(){
+
 	$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
 		commentArray =  result;
 		lastPage = Math.round(commentArray.length / commentsPerPage) - 1;
 		drawPage();
 	});
-	hideFields();
 });
+
+//set preferences before document ready load
+function setPrefs() {
+	$.getJSON("http://localhost:3000/api/v1/preferences", (result)=>{
+		preferences = result[0];
+		enablePostName = preferences.PostName;
+		enablePostEmail = preferences.PostEmail;
+		displayPostName = preferences.DisplayName;
+		displayPostEmail = preferences.DisplayEmail;
+		displayPostDate = preferences.DisplayDate;
+		defaultCommentsPerPage = preferences.PageResults;
+		commentsPerPage = defaultCommentsPerPage;
+		defaultMaxPages = preferences.TotalResults / preferences.PageResults;
+		console.log("preferences set")
+		hideFields();
+	});
+}
 
 //calls generatePage() and inserts it into #display
 function drawPage() {
 	var pageHTML = generatePage();
 	$("#display").html(pageHTML);
-
 }
 
 //runs upon document load. hides irrelevant UI elements depending on local preferences
 function hideFields() {
-	if (enablePostName === 0) {
+	console.log("hiding stuff...");
+	if (enablePostName == 0) {
+		console.log("hid name");
 		$('#input-container-name').hide();
 	}
-	if (enablePostEmail === 0) {
+	if (enablePostEmail == 0) {
+		console.log("hid date");
 		$('#input-container-email').hide();
 	}
 }
@@ -66,8 +88,12 @@ function commentToHTML(comment) {
 		commentHTML += "<div id='name-linked'>";
 	}
 	if (displayPostName == 1) {
-		commentHTML += comment.PostName;
-	} else if (displayPostName == 0 || comment.PostName === null){
+		if (comment.PostName === "") {
+			commentHTML += "Anonymous";
+		} else {
+			commentHTML += comment.PostName;
+		}
+	} else if (displayPostName == 0){
 		commentHTML += "Anonymous";
 	}
 	if (displayPostEmail == 1) {
@@ -127,18 +153,3 @@ function counter(msg){
 function blankStatus() {
     document.getElementById('status_container').innerHTML = "";
 }
-
-// $(document).ready(function(){
-//    var $form = $('form');
-// 	 console.log($(this).attr('action'));
-//    $form.submit(function(){
-//       $.post('/api/v1/post/addMessage', $(this).serialize(), function(response){
-// 				// console.log('GHelp');
-// 				// $.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
-// 				// 	var pageHTML = generatePage(result);
-// 				// 	$("#display").append(pageHTML);
-// 				// });	// do something here on success
-//       },'json');
-//       return false;
-//    });
-// });
