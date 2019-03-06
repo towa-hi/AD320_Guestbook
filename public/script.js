@@ -21,13 +21,18 @@ setPrefs();
 
 //fetch comments after page is ready
 $(document).ready(function(){
+	getMessages();
+	addSubmitClick()
+});
 
+//get all messages from db
+function getMessages() {
 	$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
 		commentArray =  result;
 		lastPage = Math.round(commentArray.length / commentsPerPage) - 1;
 		drawPage();
 	});
-});
+}
 
 //set preferences before document ready load
 function setPrefs() {
@@ -41,7 +46,6 @@ function setPrefs() {
 		defaultCommentsPerPage = preferences.PageResults;
 		commentsPerPage = defaultCommentsPerPage;
 		defaultMaxPages = preferences.TotalResults / preferences.PageResults;
-		console.log("preferences set")
 		hideFields();
 	});
 }
@@ -54,13 +58,13 @@ function drawPage() {
 
 //runs upon document load. hides irrelevant UI elements depending on local preferences
 function hideFields() {
-	console.log("hiding stuff...");
+	
 	if (enablePostName == 0) {
-		console.log("hid name");
+		
 		$('#input-container-name').hide();
 	}
 	if (enablePostEmail == 0) {
-		console.log("hid date");
+		
 		$('#input-container-email').hide();
 	}
 }
@@ -154,13 +158,17 @@ function blankStatus() {
     document.getElementById('status_container').innerHTML = "";
 }
 
-$(document).ready(function() {
+function addSubmitClick() {
 	$("#submit").click(function(e) {
 		e.preventDefault();
 		$.post('/api/v1/post', $("#top-box").serialize(), function(response) {
-			//refresh bot box (matt's code may handle this or call his function)
-			//clear out form
+			getMessages();
+			clearForm();
 		});
 	});
-});
+}
+
+function clearForm() {
+	($(".clear")).val("");
+}
 

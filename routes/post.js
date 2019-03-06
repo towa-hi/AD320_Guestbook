@@ -15,7 +15,6 @@ router.post('/', function(req,res){
   ];
 
   var testDate = dt.getTime() / 1000;
-  console.log("*************about to run query for " + testDate + " timestamp.");
 	
   db.query(query, queryParams, (error, result, fields) => {
     if (error){
