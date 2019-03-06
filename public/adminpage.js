@@ -14,8 +14,6 @@ var a = form.comment1.value;
   db.query(sql, function (err, result, fields) { 
   
     if (err) throw err; 
- 
-    console.log(result); 
   }); 
 }); 
 
