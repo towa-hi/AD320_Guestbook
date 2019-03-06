@@ -20,12 +20,12 @@
 	border: 1px solid;
 	margin: 0.5em;
 }
-#input-container {
+.input-container {
 	display: flex;
 	font-size: 1em;
 	margin: 0.5em;
 }
- 
+
 #counter_div {
 	margin:0.5em;
 }
@@ -49,17 +49,24 @@
 	display: inline-block;
 	float: left;
 	clear: left;
-	width: 20%;
+	width: 5em;
 	text-align: right;
 	margin-right: 0.5em;
 	line-height: 24px;
+}
+
+#name-field {
+	width: 100%;
+}
+#email-field {
+	width: 100%;
 }
 .error{
 	color: red; 
 	margin-left: 5px;
 }
 .input-style {
-	width: 80%;
+	width: 100%;
 }
 #submit {
 	width: 100%;
@@ -71,8 +78,10 @@
 }
 #bot-box {
 	flex: 1;
+
 	overflow-y: scroll;  
 	background-color: var(--theme-div-color)
+
 }
 #title-box {
 	text-align: center;
@@ -164,3 +173,4 @@ body#admin-body {
  margin:0 0 5px;
  padding:10px;
 }
+

@@ -1,13 +1,31 @@
-//server side code for handling posting goes here
-var app = require('../app');
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true });
 
-app.get('/preferences', function(req,res){
-	res.render('preferences', {qs: req.query});
+
+var express = require('express');
+var router = express.Router();
+var db = require('../db');
+
+router.post('/', function(req,res){
+  var dt = new Date();
+  var query = "INSERT INTO messages (PostName, PostDate, Email, Message)" + "VALUES ( ?, ?, ?, ?);"
+  var queryParams = [
+    req.body.name_field,
+    dt.getTime() / 1000,  // returns time in seconds since 1970/1/1
+    req.body.email_field,
+    req.body.message
+  ];
+
+  var testDate = dt.getTime() / 1000;
+  console.log("*************about to run query for " + testDate + " timestamp.");
+	
+  db.query(query, queryParams, (error, result, fields) => {
+    if (error){
+      res.status(500).send(error);
+    }
+    res.status(201).send('record added');
+  });
+  
 });
 
-app.post('/preferences',urlencodedParser, function(req,res){
-	console.log(req.body);
-	res.render('preferences', {qs: req.query});
-});
+
+module.exports = router;
+
