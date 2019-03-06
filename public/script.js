@@ -153,3 +153,14 @@ function counter(msg){
 function blankStatus() {
     document.getElementById('status_container').innerHTML = "";
 }
+
+$(document).ready(function() {
+	$("#submit").click(function(e) {
+		e.preventDefault();
+		$.post('/api/v1/post', $("#top-box").serialize(), function(response) {
+			//refresh bot box (matt's code may handle this or call his function)
+			//clear out form
+		});
+	});
+});
+

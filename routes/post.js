@@ -3,11 +3,9 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 
-var dt = new Date();
-
-router.post('/addMessage', function(req,res,next){
-  var query = "INSERT INTO messages (PostName, PostDate, Email, Message)"
-    +"VALUES ( ?, ?, ?, ?);"
+router.post('/', function(req,res){
+  var dt = new Date();
+  var query = "INSERT INTO messages (PostName, PostDate, Email, Message)" + "VALUES ( ?, ?, ?, ?);"
   var queryParams = [
     req.body.name_field,
     dt.getTime() / 1000,  // returns time in seconds since 1970/1/1
@@ -15,13 +13,17 @@ router.post('/addMessage', function(req,res,next){
     req.body.message
   ];
 
+  var testDate = dt.getTime() / 1000;
+  console.log("*************about to run query for " + testDate + " timestamp.");
+	
   db.query(query, queryParams, (error, result, fields) => {
     if (error){
       res.status(500).send(error);
     }
     res.status(201).send('record added');
-    // location.href = 'https://www.quackit.com';
   });
+  
 });
+
 
 module.exports = router;
