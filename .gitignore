@@ -1,7 +1,4 @@
 node_modules/
 db_creds.json
-<<<<<<< HEAD
 public/.DS_Store
-=======
->>>>>>> 0853c7c361d1788aea18edf4ab2e25c5cf3f252e
 .DS_Store
