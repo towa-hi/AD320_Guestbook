@@ -1,15 +1,84 @@
 <html>
-
 <head>
 	<title>Guestbook Admin Page</title>
 	<link rel="stylesheet" href="/stylesheets/style.css">
-	<script src = "adminpage.js"></script>
+	
 </head>
 
-<body>
+<div id ="header"><h1> Guestbook Admin Page</h1></div>
+<body id= "admin-body">
+
+
+<div id="adform-container">
+     
 
 
 
+	<form name="form" id="admin-form2" method="get" action = "" >
+
+
+  <div class="adbox">
+  <h3>Customize CSS</h3>
+  <label for="fontSize">Font size</label><br>
+  <input type="range" id="fontSize" name="rangeInput" min="11" max="40" value="0"
+       oninput="amount.value=fontSize.value">                                                       
+  <output id="amount" name="amount" for="rangeInput">0</output>
+  <br>
+  <label for="fontColor">Font color</label><br>
+  <input type="color" id="fontColor" value="white">
+  <br>
+  <label for="boxColor">Box color</label><br>
+  <input type="color" id="boxColor" value="white">
+
+  <br>
+  <label for="divColor">Div color</label><br>
+  <input type="color" id="divColor" value="white">
+  </div>
+
+
+	<div class ="adbox">
+		<h3>Information to post</h3>
+		  <input id="name-post" name = "name-post" type="checkbox" />
+		  <label for="name-post">Name</label><br>
+		  <input id="email-post" name = "email-post" type="checkbox" />
+		  <label for="email-post">Email</label><br>
+		  <input id="date-post" name = "date-post" value = "true" type="checkbox" />
+		  <label for="date-post">Date</label><br>
+		  <input id="message-post" name = "message-post" type="checkbox" />
+		  <label for="message-post">Message</label><br>
+	</div>
+
+	
+	<div class = "adbox">
+		<h3>Required information</h3>
+		  <input id="name-input" name = "nameInput" value = "true" type="checkbox" />
+		  <label for="name-input">Name</label><br>
+		  <input id="email-input" name = "email-input" value = "true" type="checkbox" />
+		  <label for="email-input">Email</label><br>
+		  <input id="message-input" name = "message-input" value = "true" type="checkbox" />
+		  <label for="message-input">Messege</label><br>
+	</div>
+	
+	<div class="adbox">
+	     <h3>Configure comments</h3>
+		 <label id="config1" for="comment1">Comments per page :</label><br>
+		 <input id="comment1" name="comment1" type="text"  value="" placeholder="0"><br>
+		 <label id="config2" for="comment2">Total number of comments :</label><br>
+		 <input id="comment2" name="comment2" type="text"  value="" placeholder="0"><br>
+		 <label id="config3" for="comment3" >Enter message ID to delete :</label><br>
+		 <input id="comment3" name="comment3" type="text"  value=""><br>         
+	</div>
+	<div>
+	<input id="adsave" value = "Save Changes" type="submit"/><br>	
+	</div>
+	</form>
+	</div>
+<script>
+
+
+</script>
 </body>
+<script src = "adminpage.js"></script>
 
+</head>
 </html>
