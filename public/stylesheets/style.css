@@ -1,9 +1,9 @@
 :root {
   --theme-font-color: black;
   --theme-box-color: #e3e8e7;
-  --theme-div-color: #e3e8e7;
+  --theme-title-box-color: #e8edd1;
+  --theme-boxBorder-color:#9ba3a8;
   --theme-font-size: 125%;
-
 }
 
 #outer-frame {
@@ -19,11 +19,13 @@
 .box {
 	border: 1px solid;
 	margin: 0.5em;
+	background-color: var(--theme-boxBorder-color);
 }
 .input-container {
 	display: flex;
 	font-size: 1em;
 	margin: 0.5em;
+	
 }
 
 #counter_div {
@@ -36,10 +38,13 @@
 			
 #message-input-container {
 	margin:0.5em;
+	
+
 }
 #message-style {
 	width: 100%;
-	min-height: 10em;            
+	min-height: 10em; 
+	         
 }
 #submit-container {
 	margin:0.5em;
@@ -74,18 +79,18 @@
 }
 #top-box {
 	margin-bottom: 0;
-	background-color: var(--theme-div-color)
+	background-color: var(--theme-box-color);
 }
 #bot-box {
 	flex: 1;
-
 	overflow-y: scroll;  
-	background-color: var(--theme-div-color)
+	background-color: var(--theme-box-color);
 
 }
 #title-box {
 	text-align: center;
 	margin-bottom: 0;
+	background-color: var(--theme-title-box-color);
 }
 #title-container{
 	display:flex;
@@ -104,8 +109,8 @@
 border: 1px solid;
 padding: 0.5em;
 margin: 0.5em;
-font-size: var(--theme-font-size);
 color:var(--theme-font-color);
+font-size: var(--theme-font-size);  
 background-color:;
 }
 
@@ -144,7 +149,7 @@ body#admin-body {
 #admin-form2 {
 	background:#ddc6b6 ;
 	padding:25px;
-	height: 850px; 
+	height: 600px; 
 	margin:10 auto;
 }
 
