@@ -8,6 +8,15 @@ var commentsPerPage;
 //holds all the comments served by the api on load
 var commentArray;
 
+//holds the maximum number charaters allowed in message text area
+const maxChar = 400;
+//number at which character count turns red
+const redCount = 10;
+const counterOffset = "1em";
+const scrollbarOffset = "1.8em";
+const alertColor = "red";
+var messageWidth;
+
 //these variables are set by setPrefs()
 var enablePostName;
 var enablePostEmail;
@@ -58,13 +67,13 @@ function drawPage() {
 
 //runs upon document load. hides irrelevant UI elements depending on local preferences
 function hideFields() {
-	
+
 	if (enablePostName == 0) {
-		
+
 		$('#input-container-name').hide();
 	}
 	if (enablePostEmail == 0) {
-		
+
 		$('#input-container-email').hide();
 	}
 }
@@ -138,19 +147,35 @@ function nextPage() {
 		console.log("can't execute nextPage(). Already on last page!");
 	}
 }
-
-//Kyle's char count function
+//Declares variables for holding element values
+var messageStyle;
+var counterDiv;
+//Kyle's reset character count function called on onload event
 function zeroCount(){
-	maxChar = document.getElementById("message-style").maxLength;
-	document.getElementById('counter_div').innerHTML = '0/'+maxChar;
+	//assigns elements to the variables
+	messageStyle = document.getElementById("message-style");
+	counterDiv = document.getElementById("counter_div");
+	//initial text width of textarea
+	messageWidth = document.getElementById("message-style").scrollWidth;
+	messageStyle.maxLength = maxChar;
+	var size = messageStyle.value.length;
+	counterDiv.innerHTML = maxChar - size;
+	counterDiv.style.color = "";
+	setCounterOffset();
 }
 
+//Kyle's char count function
 function counter(msg){
-	document.getElementById('counter_div').innerHTML = msg.value.length+'/'+maxChar;
-	if (msg.value.length == maxChar) {
-		document.getElementById('counter_div').style.color = "Red";
+	setCounterOffset();
+	counterDiv.innerHTML = maxChar - msg.value.length;
+	if (msg.value.length >= maxChar - redCount) {
+		counterDiv.style.color = alertColor;
+		if (msg.value.length > maxChar) {
+			messageStyle.innerHTML = msg.value.trim();
+			counterDiv.innerHTML = maxChar - msg.value.length;
+		} // If statement protects against Edge "Enter" key defect at maxChar
 	} else {
-		document.getElementById('counter_div').style.color = "";
+		counterDiv.style.color = "";
 	}
 }
 
@@ -164,6 +189,7 @@ function addSubmitClick() {
 		$.post('/api/v1/post', $("#top-box").serialize(), function(response) {
 			getMessages();
 			clearForm();
+			zeroCount();
 		});
 	});
 }
@@ -172,3 +198,10 @@ function clearForm() {
 	($(".clear")).val("");
 }
 
+function setCounterOffset() {
+	if(messageWidth > messageStyle.scrollWidth){
+		counterDiv.style.marginRight = scrollbarOffset;
+	} else {
+		counterDiv.style.marginRight = counterOffset;
+	}
+}
