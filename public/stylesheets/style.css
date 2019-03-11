@@ -27,19 +27,26 @@
 }
 
 #counter_div {
-	margin:0.5em;
+	/* margin-right: 1.75em; Set in script.js*/
+  height: 0px;
+  float: right;
+  position: relative;
+  bottom: 26px;
 }
 
 #status_container {
 	margin:0.5em;
 }
-			
+
 #message-input-container {
 	margin:0.5em;
 }
 #message-style {
 	width: 100%;
-	min-height: 10em;            
+	min-height: 10em;
+  resize: vertical;
+  max-height: 200px;
+  padding: 0.25em 2em .25em 0.5em;
 }
 #submit-container {
 	margin:0.5em;
@@ -62,7 +69,7 @@
 	width: 100%;
 }
 .error{
-	color: red; 
+	color: red;
 	margin-left: 5px;
 }
 .input-style {
@@ -70,18 +77,15 @@
 }
 #submit {
 	width: 100%;
-
 }
 #top-box {
 	margin-bottom: 0;
-	background-color: var(--theme-div-color)
+	background-color: var(--theme-div-color);
 }
 #bot-box {
 	flex: 1;
-
-	overflow-y: scroll;  
-	background-color: var(--theme-div-color)
-
+	overflow-y: scroll;
+	background-color: var(--theme-div-color);
 }
 #title-box {
 	text-align: center;
@@ -109,14 +113,10 @@ color:var(--theme-font-color);
 background-color:;
 }
 
-#message-style {
-	resize: vertical;
-	max-height: 200px;  
-}
 #footer {
 	text-align: center;
 }
- 
+
  /** Admin css */
  #adform-container {
 	max-width:800px;
@@ -138,13 +138,13 @@ body#admin-body {
   font-family:"Times New Roman", Times, serif;
   background-color: #492004 ;
   color:#492004;
- 
+
 }
 
 #admin-form2 {
 	background:#ddc6b6 ;
 	padding:25px;
-	height: 850px; 
+	height: 850px;
 	margin:10 auto;
 }
 
@@ -161,11 +161,11 @@ body#admin-body {
 	width:100%;
 	margin:0 0 5px;
 	padding:10px;
-	
+
 }
 
 #adsave :hover {
-	background:#ddc6b5; 	
+	background:#ddc6b5;
 }
 
 .adbox{
@@ -173,4 +173,3 @@ body#admin-body {
  margin:0 0 5px;
  padding:10px;
 }
-
