@@ -109,11 +109,17 @@ function commentToHTML(comment) {
 
 function convertFromUnixTimestamp(timestamp) {
 	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-	var a = new Date(timestamp*1000);
+	var a = new Date(timestamp * 1000);
 	var year = a.getFullYear();
 	var month = months[a.getMonth()];
 	var date = a.getDate();
-	var time = month + ' ' + date + ' ' + year;
+	var hour = 0 + a.getHours();
+	var minutes = 0 + a.getMinutes();
+	var seconds = 0 + a.getSeconds();
+	if (seconds < 10) {
+		seconds = "0" + seconds.toString();
+	}
+	var time = month + ' ' + date + ' ' + year + " " + hour + ":" + minutes + ":" + seconds;
 	return time;
 }
 
