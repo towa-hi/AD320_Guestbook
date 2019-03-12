@@ -173,3 +173,8 @@ body#admin-body {
  margin:0 0 5px;
  padding:10px;
 }
+
+#errorMessage {
+	color: red;
+	text-align: center;
+}

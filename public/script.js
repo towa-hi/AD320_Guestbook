@@ -192,7 +192,16 @@ function blankStatus() {
 function addSubmitClick() {
 	$("#submit").click(function(e) {
 		e.preventDefault();
+		if(!validateForm()) {
+			$("#errorMessage").html('Sorry, you must enter a valid Name, E-mail and Message.');
+			return;
+		}
+		$("#errorMessage").html("");
 		$.post('/api/v1/post', $("#top-box").serialize(), function(response) {
+			if(response != "record added") {
+				$("#errorMessage").html("Sorry, there was an error and you message was not sent");
+				return;
+			}
 			getMessages();
 			clearForm();
 			zeroCount();
@@ -210,4 +219,21 @@ function setCounterOffset() {
 	} else {
 		counterDiv.style.marginRight = counterOffset;
 	}
+}
+
+function validateForm() {
+	var name = $('.name').val();
+	result = true;
+	if(name.trim() == "") {
+		return false;
+	}
+	var email = $('.email').val();
+	if (email.trim() == "" || email.search("@") < 0) {
+		return false;
+	}
+	var message = $('.message').val();
+	if(message.trim() == "") {
+		return false;
+	}
+	return true;
 }
