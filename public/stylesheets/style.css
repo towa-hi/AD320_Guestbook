@@ -124,6 +124,34 @@ background-color:;
 	margin:auto;
 	align-items: center;
 }
+
+ #adform-container2 {
+    background:#ddc6b6;
+	max-width:800px;
+	width:100%;
+	margin:auto;
+	align-items: center;
+}
+
+#deleteMessage {
+	background:#ddc6b6 ;
+	padding:25px;
+	height: 150px; 
+	margin:10 auto;
+}
+
+#deleteButton {
+	cursor:pointer;
+	width:100%;
+	margin:0 0 5px;
+	padding:10px;
+	
+}
+
+#deleteButton :hover {
+	background:#ddc6b5; 	
+}
+
 #header {
 	background:#ddc6b6;
 	width:100%;
@@ -142,7 +170,7 @@ body#admin-body {
 }
 
 #admin-form2 {
-	background:#ddc6b6 ;
+	background:#ddc6b6;
 	padding:25px;
 	height: 850px; 
 	margin:10 auto;
@@ -172,5 +200,12 @@ body#admin-body {
  border: solid black 1px;
  margin:0 0 5px;
  padding:10px;
+}
+
+#deleteMessageForm {
+	background:#ddc6b6;
+	padding:25px;
+	height: 850px; 
+	margin:10 auto;
 }
 

@@ -64,15 +64,27 @@
 		 <label id="config1" for="comment1">Comments per page :</label><br>
 		 <input id="comment1" name="comment1" type="text"  value="" placeholder="0"><br>
 		 <label id="config2" for="comment2">Total number of comments :</label><br>
-		 <input id="comment2" name="comment2" type="text"  value="" placeholder="0"><br>
-		 <label id="config3" for="comment3" >Enter message ID to delete :</label><br>
-		 <input id="comment3" name="comment3" type="text"  value=""><br>         
+		 <input id="comment2" name="comment2" type="text"  value="" placeholder="0"><br><br>
+
 	</div>
 	<div>
 	<input id="adsave" value = "Save Changes" type="submit"/><br>	
 	</div>
 	</form>
-	</div>
+    
+    
+    <div id="adform-container2">
+        <form name="deleteForm" id="deleteMessage" method="post" action = "http://localhost:3000/api/v1/delete/getmessage" >
+            <div class = "adbox">
+                <h3>Look Up Message to Delete</h3>
+                <label id="mname" for="message-name" >Name :</label><br>
+                <input id="message_name" name="message_name" type="text" value=""><br><br>  
+                <div>
+                <input type = "submit" id="deleteButton" value = "Lookup Messages"/><br>	
+                </div>
+            </div>
+        </form>  
+    </div><!--End adform-container2-->
 <script>
 
 
