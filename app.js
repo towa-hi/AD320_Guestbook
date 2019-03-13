@@ -8,7 +8,11 @@ var indexRouter = require('./routes/index');
 var commentsRouter = require('./routes/comments');
 var postRouter = require('./routes/post');
 var prefRouter = require('./routes/preferences');
+
 var adminPref = require('./routes/admin');
+
+var delRouter = require('./routes/delete');
+
 //initialize app
 var app = express();
 //set paths
@@ -23,6 +27,10 @@ app.use('/', indexRouter);
 app.use('/api/v1/comments', commentsRouter);
 app.use('/api/v1/post', postRouter);
 app.use('/api/v1/preferences', prefRouter);
+
 app.use('/api/v1/ad', adminPref);
+
+app.use('/api/v1/delete', delRouter);
+
 
 module.exports = app;
