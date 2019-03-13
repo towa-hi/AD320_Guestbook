@@ -210,6 +210,12 @@ body#admin-body {
  padding:10px;
 }
 
+
+#errorMessage {
+	color: red;
+	text-align: center;
+}
+
 #deleteMessageForm {
 	background:#ddc6b6;
 	padding:25px;
