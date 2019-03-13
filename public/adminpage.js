@@ -1,21 +1,32 @@
 
-var db = require('../db');
-var t = form.nameInput.value;
-var a = form.comment1.value;
- 
- console.log(t);
- console.log(a);
- db.connect(function(err) { 
-  if (err) throw err; 
+//var db = require('../db');
+//var t = form.nameInput.value;
+//var a = form.comment1.value;
+// 
+// console.log(t);
+// console.log(a);
+// db.connect(function(err) { 
+//  if (err) throw err; 
+//
+//  var sql =`UPDATE PREFERENCES 
+//            SET PostName=0, PostEmail=0, PostMessage=0, DisplayDate=0, DisplayName=1, DisplayEmail=0, PageResults =4, TotalResults = 12 
+//            WHERE PreferenceID =1`;
+//  db.query(sql, function (err, result, fields) { 
+//  
+//    if (err) throw err; 
+//  }); 
+//}); 
 
-  var sql =`UPDATE PREFERENCES 
-            SET PostName=0, PostEmail=0, PostMessage=0, DisplayDate=0, DisplayName=1, DisplayEmail=0, PageResults =4, TotalResults = 12 
-            WHERE PreferenceID =1`;
-  db.query(sql, function (err, result, fields) { 
-  
-    if (err) throw err; 
-  }); 
-}); 
+
+//---------------------Delete Message--------------------
+
+
+document.getElementById("lookupDelete").addEventListener("click", getDelete);
+
+function getDelete(){
+    document.getElementById('deleteMessage').submit();
+
+}
 
 
 
