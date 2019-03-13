@@ -1,0 +1,25 @@
+MVP
+
+ORDER BY MessageID DESC for all queries
+
+Test database needs more entries
+
+show character limit and countdown like twitter in the message textarea
+
+Name and date need to be their own separately ID'd divs within the title-container div
+
+label in CSS needs to be an ID
+
+Ability to delete posts as an admin
+
+Hide the submission date of posts
+
+Configurable # of comments per page
+
+Size limit on comments
+
+Post comment with email, name and comments
+
+Admin has ability to require/not require name, email, message
+
+Allow admin to look up comments by post name, email, or keyword 

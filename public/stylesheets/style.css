@@ -1,9 +1,9 @@
 :root {
   --theme-font-color: black;
   --theme-box-color: #e3e8e7;
-  --theme-div-color: #e3e8e7;
+  --theme-title-box-color: #e8edd1;
+  --theme-boxBorder-color:#9ba3a8;
   --theme-font-size: 125%;
-
 }
 
 #outer-frame {
@@ -19,34 +19,32 @@
 .box {
 	border: 1px solid;
 	margin: 0.5em;
+	background-color: var(--theme-boxBorder-color);
 }
 .input-container {
 	display: flex;
 	font-size: 1em;
 	margin: 0.5em;
+	
 }
 
 #counter_div {
-	/* margin-right: 1.75em; Set in script.js*/
-  height: 0px;
-  float: right;
-  position: relative;
-  bottom: 26px;
+	margin:0.5em;
 }
 
 #status_container {
 	margin:0.5em;
 }
-
+			
 #message-input-container {
 	margin:0.5em;
+	
+
 }
 #message-style {
 	width: 100%;
-	min-height: 10em;
-  resize: vertical;
-  max-height: 200px;
-  padding: 0.25em 2em .25em 0.5em;
+	min-height: 10em; 
+	         
 }
 #submit-container {
 	margin:0.5em;
@@ -69,7 +67,7 @@
 	width: 100%;
 }
 .error{
-	color: red;
+	color: red; 
 	margin-left: 5px;
 }
 .input-style {
@@ -77,19 +75,22 @@
 }
 #submit {
 	width: 100%;
+
 }
 #top-box {
 	margin-bottom: 0;
-	background-color: var(--theme-div-color);
+	background-color: var(--theme-box-color);
 }
 #bot-box {
 	flex: 1;
-	overflow-y: scroll;
-	background-color: var(--theme-div-color);
+	overflow-y: scroll;  
+	background-color: var(--theme-box-color);
+
 }
 #title-box {
 	text-align: center;
 	margin-bottom: 0;
+	background-color: var(--theme-title-box-color);
 }
 #title-container{
 	display:flex;
@@ -108,15 +109,19 @@
 border: 1px solid;
 padding: 0.5em;
 margin: 0.5em;
-font-size: var(--theme-font-size);
 color:var(--theme-font-color);
+font-size: var(--theme-font-size);  
 background-color:;
 }
 
+#message-style {
+	resize: vertical;
+	max-height: 200px;  
+}
 #footer {
 	text-align: center;
 }
-
+ 
  /** Admin css */
  #adform-container {
 	max-width:800px;
@@ -124,6 +129,34 @@ background-color:;
 	margin:auto;
 	align-items: center;
 }
+
+ #adform-container2 {
+    background:#ddc6b6;
+	max-width:800px;
+	width:100%;
+	margin:auto;
+	align-items: center;
+}
+
+#deleteMessage {
+	background:#ddc6b6 ;
+	padding:25px;
+	height: 150px; 
+	margin:10 auto;
+}
+
+#deleteButton {
+	cursor:pointer;
+	width:100%;
+	margin:0 0 5px;
+	padding:10px;
+	
+}
+
+#deleteButton :hover {
+	background:#ddc6b5; 	
+}
+
 #header {
 	background:#ddc6b6;
 	width:100%;
@@ -138,13 +171,13 @@ body#admin-body {
   font-family:"Times New Roman", Times, serif;
   background-color: #492004 ;
   color:#492004;
-
+ 
 }
 
 #admin-form2 {
-	background:#ddc6b6 ;
+	background:#ddc6b6;
 	padding:25px;
-	height: 850px;
+	height: 600px; 
 	margin:10 auto;
 }
 
@@ -161,11 +194,11 @@ body#admin-body {
 	width:100%;
 	margin:0 0 5px;
 	padding:10px;
-
+	
 }
 
 #adsave :hover {
-	background:#ddc6b5;
+	background:#ddc6b5; 	
 }
 
 .adbox{
@@ -174,7 +207,17 @@ body#admin-body {
  padding:10px;
 }
 
+
 #errorMessage {
 	color: red;
 	text-align: center;
 }
+
+#deleteMessageForm {
+	background:#ddc6b6;
+	padding:25px;
+	height: 850px; 
+	margin:10 auto;
+}
+
+
