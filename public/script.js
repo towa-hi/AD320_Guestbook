@@ -192,8 +192,17 @@ function blankStatus() {
 function addSubmitClick() {
 	$("#submit").click(function(e) {
 		e.preventDefault();
-		if(!validateForm()) {
+		if(!validateForm() && enablePostName && enablePostEmail) {
 			$("#errorMessage").html('Sorry, you must enter a valid Name, E-mail and Message.');
+			return;
+		} else if(!validateForm() && enablePostName && !enablePostEmail) {
+			$("#errorMessage").html('Sorry, you must enter a valid Name and Message.');
+			return;
+		} else if(!validateForm() && !enablePostName && enablePostEmail) {
+			$("#errorMessage").html('Sorry, you must enter a valid E-mail and Message.');
+			return;
+		} else if(!validateForm()) {
+			$("#errorMessage").html('Sorry, you must enter a Message.');
 			return;
 		}
 		$("#errorMessage").html("");
@@ -224,11 +233,11 @@ function setCounterOffset() {
 function validateForm() {
 	var name = $('.name').val();
 	result = true;
-	if(name.trim() == "") {
+	if(name.trim() == "" && enablePostName) { 
 		return false;
 	}
 	var email = $('.email').val();
-	if (email.trim() == "" || email.search("@") < 0) {
+	if ((email.trim() == "" || email.search("@") < 0) && enablePostEmail) {
 		return false;
 	}
 	var message = $('.message').val();
