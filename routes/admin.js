@@ -30,7 +30,7 @@ router.post('/', function(req,res){
     if (error){
       res.status(500).send(error);
     }
-    res.redirect('/');
+    res.redirect('/admin.html');
   });
   
 });
