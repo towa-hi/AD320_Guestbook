@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="/stylesheets/style.css">
 	
 </head>
-
-<div id ="header"><h1> Guestbook Admin Page</h1></div>
+<div id ="header"><h1> Guestbook Admin Page</h1>
+<input id="adButton" value = "Logout" type="button" onclick="window.location.href = '/'" /><br></div>
 <body id= "admin-body">
 
 
@@ -14,44 +14,43 @@
 
 
 
-	<form name="form" id="admin-form2" method="POST" action="/api/v1/ad" onsubmit="return validateForm()" >
+	<form name="form" id="admin-form2" method="POST" action="/api/v1/ad">
 
 	<div class ="adbox">
 		<h3>Information to post</h3>
-		  <input id="namePost" name = "name_post" type="checkbox" checked="checked" value="1"/>
+		  <input id="namePost" name = "name_display" type="checkbox" value="1" />
 		  <label for="namePost">Name</label><br>
-		  <input id="emailPost" name = "email_post" type="checkbox" checked="checked" value="1"/>
+		  <input id="emailPost" name = "email_display" type="checkbox" value="1"  />
 		  <label for="emailPost">Email</label><br>
-		  <input id="datePost" name = "date_post" type="checkbox" checked="checked" value="1"/>
+		  <input id="datePost" name = "date_display" type="checkbox" value="1" />
 		  <label for="datePost">Date</label><br>
-		  <input id="messagePost" name = "message_post" type="checkbox" checked="checked" value="1"/>
-		  <label for="messagePost">Message</label><br>
-	</div>
-
-	
-	<div class = "adbox">
-		<h3>Required information</h3>
-		  <input id="nameInput" name = "name_input"  type="checkbox" checked="checked" value="1"/>
-		  <label for="nameInput">Name</label><br>
-		  <input id="emailInput" name = "email_input" type="checkbox" checked="checked" value="1"/>
-		  <label for="emailInput">Email</label><br>
 		  
 	</div>
+    <br>
 	
+	<div  class = "adbox">
+		<h3>Required information</h3>
+		  <input id="nameInput" name = "name_post"  type="checkbox" value="1"/>
+		  <label for="nameInput">Name</label><br>
+		  <input id="emailInput" name = "email_post" type="checkbox" value="1"/>
+		  <label for="emailInput">Email</label><br>		  
+	</div>
+	<br>
 	<div class="adbox">
 	     <h3>Configure comments</h3>
-		 <label id="config1" for="comment1">Comments per page :</label><br>
-		 <input id="comment1" name="comment1" type="text"  value="" placeholder="0" required><br>
-		 <label id="config2" for="comment2">Total number of comments :</label><br>
-		 <input id="comment2" name="comment2" type="text"  value="" placeholder="0" required><br>
 
+		 <label id="config1" for="comment1">Comments per page :</label><br>
+		 <input id="comment1" name="comment1" type="text"  value="5"  required><br>
+		 <label id="config2" for="comment2">Total number of comments :</label><br>
+		 <input id="comment2" name="comment2" type="text"  value="20"  required><br>
+		 <h5>Default value recommended</h5>     
 	</div>
 	<div>
 	<input id="adsave" value = "Save Changes" type="submit" /><br>	
 	</div>
 	</form>
-	</div>
-    
+	
+	</div>   
     
     <div id="adform-container2">
         <form name="deleteForm" id="deleteMessage" method="post" action = "http://localhost:3000/api/v1/delete/getmessage" >
@@ -67,7 +66,8 @@
     </div><!--End adform-container2-->
 
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src = "adminpage.js"></script>
 
 </head>
 </html>

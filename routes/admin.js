@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../db');
 
 router.post('/', function(req,res){
+
 	var pref = [
 		req.body.name_post,
 		req.body.email_post,
@@ -24,7 +25,7 @@ router.post('/', function(req,res){
 		if (error){
 			res.send(error);
 		} else {
-			res.status(201).send('preferences updated');
+			res.redirect('/admin.html');
 		}
 	});
 });
