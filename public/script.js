@@ -1,5 +1,5 @@
 //This script runs when the page loads on client side. it gets all the data from the api, generates a page and then inserts it into index.html #display div
-//var serverIP = "http://18.218.147.148:3000/";
+//var serverIP = "http://18.218.147.148:3000";
 var serverIP = "http://localhost:3000";
 var serverCommentsAPI = serverIP + "/api/v1/comments/all";
 var serverPreferencesAPI = serverIP + "/api/v1/preferences";
@@ -153,6 +153,7 @@ function nextPage() {
 		console.log("can't execute nextPage(). Already on last page!");
 	}
 }
+
 //Declares variables for holding element values
 var messageStyle;
 var counterDiv;

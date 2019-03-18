@@ -144,7 +144,21 @@ background-color:;
 	text-align: center;
 }
 
+#page-select-container {
+	display: flex;
+	
+}
+
+#back-page-link {
+	width: 100%;
+}
+#next-page-link {
+	width:100%;
+}
+
+
  /** Admin css */
+ 
  #adform-container {
 	max-width:800px;
 	width:100%;
