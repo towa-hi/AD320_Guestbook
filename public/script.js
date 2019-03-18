@@ -1,5 +1,8 @@
 //This script runs when the page loads on client side. it gets all the data from the api, generates a page and then inserts it into index.html #display div
-
+//var serverIP = "http://18.218.147.148:3000/";
+var serverIP = "http://localhost:3000";
+var serverCommentsAPI = serverIP + "/api/v1/comments/all";
+var serverPreferencesAPI = serverIP + "/api/v1/preferences";
 var currentPage = 0;
 var maxPages = 10;
 var lastPage = 0;
@@ -36,7 +39,7 @@ $(document).ready(function(){
 
 //get all messages from db
 function getMessages() {
-	$.getJSON("http://localhost:3000/api/v1/comments/all", (result)=>{
+	$.getJSON(serverCommentsAPI, (result)=>{
 		commentArray =  result;
 		lastPage = Math.round(commentArray.length / commentsPerPage) - 1;
 		drawPage();
@@ -45,7 +48,7 @@ function getMessages() {
 
 //set preferences before document ready load
 function setPrefs() {
-	$.getJSON("http://localhost:3000/api/v1/preferences", (result)=>{
+	$.getJSON(serverPreferencesAPI, (result)=>{
 		preferences = result[0];
 		enablePostName = preferences.PostName;
 		enablePostEmail = preferences.PostEmail;
@@ -67,13 +70,10 @@ function drawPage() {
 
 //runs upon document load. hides irrelevant UI elements depending on local preferences
 function hideFields() {
-
 	if (enablePostName == 0) {
-
 		$('#input-container-name').hide();
 	}
 	if (enablePostEmail == 0) {
-
 		$('#input-container-email').hide();
 	}
 }
@@ -186,7 +186,7 @@ function counter(msg){
 }
 
 function blankStatus() {
-    document.getElementById('status_container').innerHTML = "";
+	document.getElementById('status_container').innerHTML = "";
 }
 
 function addSubmitClick() {
