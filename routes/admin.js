@@ -7,10 +7,9 @@ router.post('/', function(req,res){
 	var pref = [
 		req.body.name_post,
 		req.body.email_post,
-		req.body.message_post,
-		req.body.date_post,
-		req.body.name_input,
-		req.body.email_input,
+		req.body.date_display,
+		req.body.name_display,
+		req.body.email_display,
 		req.body.comment1,
 		req.body.comment2,
 	];
@@ -19,12 +18,14 @@ router.post('/', function(req,res){
 			pref[i]=0;
 		}
 	}
-	var query =`UPDATE PREFERENCES SET PostName = ?, PostEmail = ?, PostMessage = ?, DisplayDate = ?, DisplayName = ?, DisplayEmail= ?, PageResults = ?, TotalResults = ? WHERE PreferenceID = 1`;
+	var query =`UPDATE PREFERENCES SET PostName = ?, PostEmail = ?, PostMessage = 1, DisplayDate = ?, DisplayName = ?, DisplayEmail= ?, PageResults = ?, TotalResults = ? WHERE PreferenceID = 1;`;
 	var queryParams = pref;
 	db.query(query, queryParams, (error, result, fields) => {
 		if (error){
 			res.send(error);
 		} else {
+			console.log(query);
+			console.log(queryParams);
 			res.redirect('/admin.html');
 		}
 	});
