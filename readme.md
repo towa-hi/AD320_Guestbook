@@ -11,4 +11,4 @@ to install,
 4. npm install
 5. edit /public/script.js var called serverIP to your server IP if you are not running from localhost.
 6. npm start to run the program.
-
+7. to access admin page, click the login button. the default credentials are 'admin1' and 'a1a1a1' as the password. 
