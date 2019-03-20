@@ -7,54 +7,33 @@
 	<!--Google Charts API-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-		
 		var arr = new Array();
 		$.get('/api/v1/statistics', function(response) {
-				
-				
 			var result = response;
 				var i=0;
+				var day = "";
 				result.forEach(function() {
-					arr.push(new Array(result[i]["day"], result[i]["dayCount"]));
-					//console.log(result[i]["day"]);
+					day = parseInt(result[i]["day"]) + " ";
+					arr.push( new Array(day, result[i]["dayCount"]) );
 					i++;
 				});
-				
-				
-				
-				
-				
-				
-				
-				
-
-				
-			});
-	  
-     
-      
-      arr.push(new Array('3', 2));
-	  
-	   google.charts.load('current', {'packages':['corechart']});
+			console.log(arr);
+		});
+	google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-
     function drawChart() {
-
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Day');
       data.addColumn('number', 'Count');
       data.addRows(arr);
-
       var options = {
-        title: 'Message By Day',
+        title: 'Messages By Day',
         legend: { position: 'none' },
         format: 'none'
       };
-
       var chart = new google.visualization.ColumnChart(document.getElementById('graph'));
       chart.draw(data, options);
     }
-	  
 	</script>
 </head>
 <link rel="stylesheet" href="/stylesheets/style.css">
