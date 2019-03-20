@@ -9,28 +9,11 @@ router.get('/', function(req, res) {
 		if(error) {
 			res.send(error);
 		}
+		else {
+			res.send(result);
+		}
 		
-			arr.push(new Array(parseInt(result[0]["day"]), result[0]["dayCount"]));
-			arr.push(new Array(parseInt(result[1]["day"]), result[1]["dayCount"]));
-		
-		
-		console.log(arr);
-		res.send(arr);
-				
-				
-		// 		var result = JSON.parse(response);
-// 				console.log(result[0]);
-// 				var i=0;
-				// result.forEach(function() {
-// 					arr.push(new Array(result[i]["day"], result[i]["dayCount"]));
-// 					
-// 					i++;
-// 				});
-			//}
-			//var numbers = "[[15, 9]]";
-			//res.send(JSON.stringify(result));
-			//res.send(resultArray());
-		//}
+
 	});
  });
  
