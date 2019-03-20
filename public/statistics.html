@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+	<title>Guestbook Statistics Page</title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src = "script.js"></script>
+	<!--Google Charts API-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		
+		var arr = new Array();
+		$.get('/api/v1/statistics', function(response) {
+				
+				
+			var result = response;
+				var i=0;
+				result.forEach(function() {
+					arr.push(new Array(result[i]["day"], result[i]["dayCount"]));
+					//console.log(result[i]["day"]);
+					i++;
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+
+				
+			});
+	  
+     
+      
+      arr.push(new Array('3', 2));
+	  
+	   google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Day');
+      data.addColumn('number', 'Count');
+      data.addRows(arr);
+
+      var options = {
+        title: 'Message By Day',
+        legend: { position: 'none' },
+        format: 'none'
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('graph'));
+      chart.draw(data, options);
+    }
+	  
+	</script>
+</head>
+<link rel="stylesheet" href="/stylesheets/style.css">
+   <body id= "stats-body">
+  		<div id="stats-div">
+			<h2>Message Statistics</h2>
+			<div id="graph"><!--graph goes here--></div>
+		</div>
+	</body>
+</html>
+

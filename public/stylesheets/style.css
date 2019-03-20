@@ -318,3 +318,18 @@ body#admin-body {
 	background:#ddc6b6; 	
 
 }
+
+#stats-body {
+	font-family:"Times New Roman", Times, serif;
+   	background-color: #492004 ;
+  	color:#492004;
+  	text-align: center;
+}
+
+#stats-div {
+	background:#ddc6b6;
+	padding:25px;
+	margin:80px auto;
+	max-width:800px;
+	width:100%;
+}

@@ -11,6 +11,7 @@ var postRouter = require('./routes/post');
 var prefRouter = require('./routes/preferences');
 var adLoginRoute = require('./controllers/authenticate')
 var adminPref = require('./routes/admin');
+var statsRouter = require('./routes/statistics');
 
 
 var delRouter = require('./routes/delete');
@@ -36,6 +37,7 @@ app.use('/api/v1/ad', adminPref);
 
 app.use('/api/v1/delete', delRouter);
 app.use('/api/v1/authenticate', adLoginRoute);
+app.use('/api/v1/statistics', statsRouter);
 
 
 module.exports = app;
